@@ -5,13 +5,15 @@ class App extends React.Component {
   constructor () {
     super()
     this.state = {
-      greeting: 'hello world'
+      greeting: 'Home page'
     },
     this.getRequest = this.getRequest.bind(this)
   }
 
   render () {
-    return <div>{ this.state.greeting }</div>
+    return <div>{ this.state.greeting }
+      {this.props.children}
+    </div>
   }
 
   componentDidMount () {
