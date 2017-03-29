@@ -8,34 +8,49 @@ class Registration extends React.Component {
     this.state = {
     	registrant: {
     		lastName: '',
-    		firstName: 'Maxime',
+    		firstName: '',
         isComing: false,
         diner: 'chicken',
-        allergies: 'yes',
-        personalMessage: 'this is a message'
+        allergies: '',
+        personalMessage: ''
     	}
     },
     this.updatefield = this.updatefield.bind(this)
   }
 
-  updatefield (value) {
+  updatefield (value, inputName) {
+    console.log(value, inputName)
     var updatedRegistrant = Object.assign(this.state.registrant)
-    updatedRegistrant['lastName'] = value
+    updatedRegistrant[inputName] = value
     this.setState({ regitrant: updatedRegistrant })
   }
 
   render () {
     return <div>
     	<form>
-    		<TextField  inputLabel="Last Name"
-                    inputName="lastName"
-                    updateFieldState={ (value) => this.updatefield(value) }
-                    fieldValue={ this.state.registrant.lastName }
-                    />
         <TextField  inputLabel="First Name"
                     inputName="firstName"
-                    updateFieldState={ (value) => this.updatefield(value) }
+                    inputType="text"
+                    updateFieldState={ (value, inputName) => this.updatefield(value, inputName) }
+                    fieldValue={ this.state.registrant.firstName }
+                    />
+        <TextField  inputLabel="Last Name"
+                    inputName="lastName"
+                    inputType="text"
+                    updateFieldState={ (value, inputName) => this.updatefield(value, inputName) }
                     fieldValue={ this.state.registrant.lastName }
+                    />
+        <TextField  inputLabel="Do you have any allergies, you piece of shit?"
+                    inputName="allergies"
+                    inputType="textarea"
+                    updateFieldState={ (value, inputName) => this.updatefield(value, inputName) }
+                    fieldValue={ this.state.registrant.allergies }
+                    />
+        <TextField  inputLabel="Any shit you wanna tell us?"
+                    inputName="personalMessage"
+                    inputType="textarea"
+                    updateFieldState={ (value, inputName) => this.updatefield(value, inputName) }
+                    fieldValue={ this.state.registrant.personalMessage }
                     />
     	</form>
     </div>
