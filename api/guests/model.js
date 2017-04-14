@@ -1,12 +1,13 @@
 var mongoose = require('mongoose')
 
 var PostSchema = new mongoose.Schema({
-  // title: String,
-  // description: String,
-  // image: String,
-  // posted_by: String,
-  // like_count: Number
-  greeting: String
+  firstName: String,
+  lastName: String,
+  isComing: String,
+  isBringingGuest: String,
+  dinerChoice: String,
+  allergies: String,
+  personalMessage: String
 })
 
 module.exports = mongoose.model('Post', PostSchema)

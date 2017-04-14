@@ -1,5 +1,8 @@
 import React from 'react'
 
+import StoryComponent from './storyComponent'
+import RegisterCta from './cta/registerCta/index.js'
+
 class MainPage extends React.Component {
   constructor () {
     super()
@@ -8,7 +11,10 @@ class MainPage extends React.Component {
   }
 
   render () {
-    return <div>Main page!</div>
+    return <div className="app-container">
+    	<StoryComponent />
+    	<RegisterCta />
+    </div>
   }
 }
 

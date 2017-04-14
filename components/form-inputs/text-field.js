@@ -1,38 +1,60 @@
 import React from 'react'
 
-const TextField = ({ inputLabel, fieldValue, inputName, inputType, updateFieldState }) => {
-  let field
+import { FormGroup, ControlLabel, FormControl, Radio } from 'react-bootstrap';
 
+const TextField = ({ inputLabel, fieldValue, inputName, inputType, updateFieldState, radioValue }) => {
+  let field
   if (inputType === 'text') {
     field = (
-      <input  type={ inputType }
-              value={ fieldValue }
-              placeholder="This a placeholder"
-              onChange={ (evt) => updateFieldState(evt.target.value, inputName) }
-              />
+      <FormControl  type="text"
+                    label="Text"
+                    value={ fieldValue }
+                    placeholder="Type here"
+                    onChange={ (evt) => updateFieldState(evt.target.value, inputName) }
+                    />
     )
   } else if (inputType === 'textarea') {
     field = (
-      <textarea   value={ fieldValue }
-                  placeholder="This a placeholder"
-                  onChange={ (evt) => updateFieldState(evt.target.value, inputName) }
-                  />
+      <FormControl  componentClass="textarea" 
+                    placeholder="textarea"    value={ fieldValue }
+                    placeholder="Type here"
+                    onChange={ (evt) => updateFieldState(evt.target.value, inputName) }
+                    />
+    )
+  } else if (inputType === 'radio') {
+    field = (
+      <FormGroup className="noMargin">
+        <radiogroup>
+          {radioValue.map((value, index) => {
+            return <Radio inline 
+                          name={inputName} 
+                          key={index} 
+                          value={value}
+                          onChange={ (evt) => updateFieldState(evt.target.value, inputName) }
+                          checked={value == fieldValue}
+                          >
+                          {value} 
+                          </Radio>
+          })}
+        </radiogroup>
+      </FormGroup>
     )
   } else {
     field = (
-      <input  type={ inputType }
-              value={ fieldValue }
-              placeholder="This a placeholder"
-              onChange={ (evt) => updateFieldState(evt.target.value, inputName) }
-              />
+      <FormControl  componentClass="textarea" 
+                    placeholder="textarea"   type={ inputType }
+                    value={ fieldValue }
+                    placeholder="This a placeholder"
+                    onChange={ (evt) => updateFieldState(evt.target.value, inputName) }
+                    />
     )
   }
 
   return (
-    <div>
-      <label>{inputLabel}</label>
+    <FormGroup className="paddingBottom noMargin" controlId="formControlsTextarea">
+      <ControlLabel>{inputLabel}</ControlLabel>
       { field }
-    </div>
+    </FormGroup>
   )
 }
 

@@ -1,17 +1,19 @@
 import React from 'react'
 import $ from 'jquery'
+import Nav from './nav'
 
 class App extends React.Component {
   constructor () {
     super()
     this.state = {
-      greeting: 'Home page'
+      greeting: 'Layout'
     },
     this.getRequest = this.getRequest.bind(this)
   }
 
   render () {
-    return <div>{ this.state.greeting }
+    return <div>
+      <Nav />
       {this.props.children}
     </div>
   }

@@ -1,15 +1,14 @@
 var express = require('express')
 var app = express()
-var webpackMiddleware = require('webpack-dev-middleware')
+
 var webpack = require('webpack')
+var webpackMiddleware = require('webpack-dev-middleware')
 
-// require mongoose
 // var mongoose = require('mongoose')
-// mongoose.connect('mongodb://localhost/trading')
+// mongoose.connect('mongodb://localhost/wedding-guests')
 
-// parse the json - npm install body-parser
-// var bodyParser = require('body-parser')
-// app.use(bodyParser.json())
+var bodyParser = require('body-parser')
+app.use(bodyParser.json())
 
 app.use(webpackMiddleware(webpack(require('./webpack.config.js'))))
 
