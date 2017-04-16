@@ -40,18 +40,11 @@ const TextField = ({ inputLabel, fieldValue, inputName, inputType, updateFieldSt
       </FormGroup>
     )
   } else {
-    field = (
-      <FormControl  componentClass="textarea" 
-                    placeholder="textarea"   type={ inputType }
-                    value={ fieldValue }
-                    placeholder="This a placeholder"
-                    onChange={ (evt) => updateFieldState(evt.target.value, inputName) }
-                    />
-    )
+    field = 'no corresponding field'
   }
 
   return (
-    <FormGroup className="paddingBottom noMargin" controlId="formControlsTextarea">
+    <FormGroup className="paddingBottom noMargin" controlId={inputName}>
       <ControlLabel>{inputLabel}</ControlLabel>
       { field }
     </FormGroup>

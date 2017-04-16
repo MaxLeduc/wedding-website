@@ -9,13 +9,19 @@ class Registration extends React.Component {
   super()
   this.state = {
     guest: {
+    email: 'test@placeholder.com',
+    validationCode: '1234',
     firstName: '',
     lastName: '',
     isComing: '',
-    isBringingGuest: '',
     dinerChoice: '',
     allergies: '',
-    personalMessage: ''
+    personalMessage: '',
+    isBringingGuest: '',
+    guestFirstName: '',
+    guestLastName: '',
+    guestDinerChoice: '',
+    guestAllergies: ''
     }
   },
     this.updatefield = this.updatefield.bind(this)
@@ -56,13 +62,6 @@ class Registration extends React.Component {
                   />
       { this. state.guest.isComing === 'yes' ?
         <div>
-          <TextField  inputType="radio"
-                      radioValue={['yes', 'no']}
-                      inputName="isBringingGuest"
-                      inputLabel="Will you bring a guest with you (don't worry, you can register them after you submit your registration)?"
-                      updateFieldState={ (value, inputName) => this.updatefield(value, inputName) }
-                      fieldValue={ this.state.guest.isBringingGuest }
-                      />
           <TextField  inputType="radio" 
                       radioValue={['Chicken', 'Beef', 'Vegetarian']}
                       inputName="dinerChoice"
@@ -82,14 +81,46 @@ class Registration extends React.Component {
                       updateFieldState={ (value, inputName) => this.updatefield(value, inputName) }
                       fieldValue={ this.state.guest.personalMessage }
                       />
+          <TextField  inputType="radio"
+                      radioValue={['yes', 'no']}
+                      inputName="isBringingGuest"
+                      inputLabel="Will you bring a guest with you?"
+                      updateFieldState={ (value, inputName) => this.updatefield(value, inputName) }
+                      fieldValue={ this.state.guest.isBringingGuest }
+                      />
+          { this. state.guest.isBringingGuest === 'yes' ?
+            <div className="app-container regitration-guestWrapper">
+              <h3>Guest Information</h3>
+              <TextField  inputType="text"
+                          inputLabel="Guest First Name"
+                          inputName="guestFirstName"
+                          updateFieldState={ (value, inputName) => this.updatefield(value, inputName) }
+                          fieldValue={ this.state.guest.guestFirstName }
+                          />
+              <TextField  inputType="text"
+                          inputLabel="Guest Last Name"
+                          inputName="guestLastName"
+                          updateFieldState={ (value, inputName) => this.updatefield(value, inputName) }
+                          fieldValue={ this.state.guest.guestLastName }
+                          />
+              <TextField  inputType="radio" 
+                          radioValue={['Chicken', 'Beef', 'Vegetarian']}
+                          inputName="guestDinerChoice"
+                          inputLabel="Guest dinner choice?"
+                          updateFieldState={ (value, inputName) => this.updatefield(value, inputName) }
+                          fieldValue={ this.state.guest.guestDinerChoice }
+                          />
+              <TextField  inputType="textarea"
+                          inputLabel="Any allergies or dietary preferences?"
+                          inputName="guestAllergies"
+                          updateFieldState={ (value, inputName) => this.updatefield(value, inputName) }
+                          fieldValue={ this.state.guest.guestAllergies }
+                          />
+            </div>
+          : null }
         </div>
       : null }
-
-      { this.state.guest.isBringingGuest === 'yes' ?
-        <Button bsStyle="info" onClick={() => this.submitGuest()}>Submit and add a +1</Button>
-      :
-        <Button bsStyle="primary" onClick={() => this.submitGuest()}>Submit</Button>
-      }
+      <Button bsStyle="primary" onClick={() => this.submitGuest()}>Submit</Button>
     </form>
   </div>
   }
