@@ -4,8 +4,8 @@ var app = express()
 var webpack = require('webpack')
 var webpackMiddleware = require('webpack-dev-middleware')
 
-// var mongoose = require('mongoose')
-// mongoose.connect('mongodb://localhost/wedding-guests')
+var mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost/da-gs')
 
 var bodyParser = require('body-parser')
 app.use(bodyParser.json())

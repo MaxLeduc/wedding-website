@@ -1,7 +1,9 @@
 import React from 'react'
 
-import StoryComponent from './storyComponent'
-import RegisterCta from './cta/registerCta/index.js'
+import StoryComponent from './frontPage/ourStory.js'
+import RegisterCta from './cta/registerCta/'
+import DetailsComponent from './frontPage/details.js'
+import FaqComponent from './frontPage/faq.js'
 
 class MainPage extends React.Component {
   constructor () {
@@ -13,7 +15,9 @@ class MainPage extends React.Component {
   render () {
     return <div className="app-container">
     	<StoryComponent />
+      <DetailsComponent />
     	<RegisterCta />
+      <FaqComponent />
     </div>
   }
 }
