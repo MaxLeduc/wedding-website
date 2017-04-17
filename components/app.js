@@ -10,8 +10,7 @@ class App extends React.Component {
     super()
     this.state = {
       greeting: 'Layout'
-    },
-    this.getRequest = this.getRequest.bind(this)
+    }
   }
 
   render () {
@@ -21,20 +20,6 @@ class App extends React.Component {
       {this.props.children}
       <Footer />
     </div>
-  }
-
-  componentDidMount () {
-    this.getRequest()
-  }
-
-  getRequest () {
-    $.get('/api/guests')
-    .then(data => {
-      console.log(data)
-    })
-    .catch(err => {
-      console.log(err)
-    })
   }
 }
 

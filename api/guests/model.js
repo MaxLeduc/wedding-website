@@ -1,13 +1,24 @@
 var mongoose = require('mongoose')
 
-var PostSchema = new mongoose.Schema({
+require('../food/model')
+
+var GuestSchema = new mongoose.Schema({
+  email: String,
+  validationCode: String,
   firstName: String,
   lastName: String,
-  isComing: String,
-  isBringingGuest: String,
-  dinerChoice: String,
+  isComing: Boolean,
+  dinerChoice: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Food'
+  },
   allergies: String,
-  personalMessage: String
+  personalMessage: String,
+  isBringingGuest: Boolean,
+  guestFirstName: String,
+  guestLastName: String,
+  guestDinerChoice: String,
+  guestAllergies: String
 })
 
-module.exports = mongoose.model('Post', PostSchema)
+module.exports = mongoose.model('Guest', GuestSchema)
