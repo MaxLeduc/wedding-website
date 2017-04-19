@@ -11,8 +11,6 @@ const Hero = () => {
     heroClassNames = "hero-wrapper"
   }
 
-  console.log(heroClassNames)
-
   return <div className={ heroClassNames }>
     <h1>Our Wedding</h1>
     <h3>June 23rd, 2018</h3>

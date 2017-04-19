@@ -19,10 +19,13 @@
 }
 
 .regitration-guestWrapper {
-  border: 0.5px solid grey;
-  padding: 0px 30px;
-  border-radius: 5px;
-  margin-bottom: 30px;
+  margin: 50px;
+}
+
+.registration-title {
+  padding-bottom: 10px;
+  border-bottom: 0.5px solid grey;
+  margin: 15px 0;
 }
 
 @import './components/nav/style';

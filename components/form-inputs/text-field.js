@@ -10,7 +10,7 @@ const TextField = ({ inputLabel, fieldValue, inputName, inputType, updateFieldSt
                     label="Text"
                     value={ fieldValue }
                     placeholder="Type here"
-                    onChange={ (evt) => updateFieldState(evt.target.value, inputName) }
+                    onChange={ (evt) => updateFieldState(evt.target.value, inputName, 'string') }
                     />
     )
   } else if (inputType === 'textarea') {
@@ -18,7 +18,7 @@ const TextField = ({ inputLabel, fieldValue, inputName, inputType, updateFieldSt
       <FormControl  componentClass="textarea" 
                     placeholder="textarea"    value={ fieldValue }
                     placeholder="Type here"
-                    onChange={ (evt) => updateFieldState(evt.target.value, inputName) }
+                    onChange={ (evt) => updateFieldState(evt.target.value, inputName, 'string') }
                     />
     )
   } else if (inputType === 'radio') {
@@ -29,11 +29,35 @@ const TextField = ({ inputLabel, fieldValue, inputName, inputType, updateFieldSt
             return <Radio inline 
                           name={inputName} 
                           key={index} 
+                          value={value._id}
+                          onChange={ (evt) => updateFieldState(evt.target.value, inputName, 'string') }
+                          checked={value._id == fieldValue}
+                          >
+                          {value.foodOption}
+                          </Radio>
+          })}
+        </radiogroup>
+      </FormGroup>
+    )
+  } else if (inputType === 'bool') {
+    field = (
+      <FormGroup className="noMargin">
+        <radiogroup>
+          {radioValue.map((value, index) => {
+            let textValue
+            if (value) {
+              textValue = 'Yes'
+            } else {
+              textValue = 'No'
+            }
+            return <Radio inline 
+                          name={inputName} 
+                          key={index} 
                           value={value}
-                          onChange={ (evt) => updateFieldState(evt.target.value, inputName) }
+                          onChange={ (evt) => updateFieldState(evt.target.value, inputName, 'bool') }
                           checked={value == fieldValue}
                           >
-                          {value} 
+                          {textValue}
                           </Radio>
           })}
         </radiogroup>
