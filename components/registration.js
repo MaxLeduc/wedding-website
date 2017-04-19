@@ -55,15 +55,20 @@ class Registration extends React.Component {
   //make thank you submission thing
 
   submitGuest () {
-    $.ajax({
-      method: "POST",
-      url: "/api/guests",
-      data: JSON.stringify({ url: this.state.guest }),
-      contentType: "application/json"
+    if (this.state.guest.firstName && this.state.guest.lastName) {
+      console.log('boom... api call')
+      $.ajax({
+        method: "POST",
+        url: "/api/guests",
+        data: JSON.stringify({ url: this.state.guest }),
+        contentType: "application/json"
+        })
+      .then(() => {
+        this.setState({newImage: ''})
       })
-    .then(() => {
-      this.setState({newImage: ''})
-    })
+    } else {
+      alert('Woah, can\'t do that')
+    }
   }
 
   componentDidMount () {
